@@ -3,16 +3,27 @@
 
 React Native Wrapper of Google Place Picker for iOS + Android.
 
-## Getting started
+iOS | Android
+------- | ----
+<img title="iOS" src="https://i.imgur.com/whMT9CD.png" width="350"> | <img title="Android" src="https://i.imgur.com/LnzejpT.png" width="350">
 
-`$ npm install react-native-google-place-picker --save`
+## Table of contents
+- [Install](#install)
+  - [iOS](#ios)
+  - [Android](#android)
+- [Usage](#usage)
+  - [Example](#example)
+- [Response object](#the-response-object)
 
-### Mostly automatic installation
+## Install
 
-`$ react-native link react-native-google-place-picker`
+`npm install react-native-google-place-picker --save`
 
-### Manual installation
+Then you must install the native dependencies. You can use `rnpm` (now part of `react-native` core) to add native dependencies automatically:
 
+`react-native link`
+
+ or link manually like so: 
 
 #### iOS
 
@@ -43,14 +54,18 @@ React Native Wrapper of Google Place Picker for iOS + Android.
   - Add `import com.reactlibrary.RNGooglePlacePickerPackage;` to the imports at the top of the file
   - Add `new RNGooglePlacePickerPackage()` to the list returned by the `getPackages()` method
 2. Append the following lines to `android/settings.gradle`:
-  	```
-  	include ':react-native-google-place-picker'
-  	project(':react-native-google-place-picker').projectDir = new File(rootProject.projectDir, 	'../node_modules/react-native-google-place-picker/android')
-  	```
+
+```groovy
+include ':react-native-google-place-picker'
+project(':react-native-google-place-picker').projectDir = new File(rootProject.projectDir, 	'../node_modules/react-native-google-place-picker/android')
+```
+
 3. Insert the following lines inside the dependencies block in `android/app/build.gradle`:
-  	```
-      compile project(':react-native-google-place-picker')
-  	```
+
+```groovy
+compile project(':react-native-google-place-picker')
+```
+
 4. Add permisson and your `YOUR_API_KEY` to your manifest file:
 
 ```xml
@@ -97,14 +112,26 @@ RNGooglePlacePicker.show((response) => {
   }
 })
 ```
+### Example
+* A fully working [example](https://github.com/q6112345/react-native-google-place-picker/tree/master/example)
 
-#### For a fully working example look [here](https://github.com/q6112345/react-native-google-place-picker/tree/master/example)
+### The Response Object
+
+key | type | Description
+------ | ---- | ------- | ----------------------
+didCancel | boolean | Informs you if the user cancelled the process
+error | string | Contains an error message, if there is one
+address | string/null | The formated address of selected location, null if not available
+latitude | number | The latitude value of selected location
+longitude | number | The longitude value of selected location
 
 ### Credits
-* [react-native-create-librar](https://github.com/frostney/react-native-create-library)
+Thanks following repositories' inspiration/help:
+
+* [react-native-create-library](https://github.com/frostney/react-native-create-library)
+* [react-native-image-picker](https://github.com/marcshilling/react-native-image-picker)
 * [react-native-maps](https://github.com/lelandrichardson/react-native-maps)
 * [react-native-lock](https://github.com/auth0/react-native-lock)
-* [react-native-image-picker](https://github.com/marcshilling/react-native-image-picker)
 
 
 ### License
