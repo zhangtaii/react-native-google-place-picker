@@ -5,7 +5,7 @@ React Native Wrapper of Google Place Picker for iOS + Android.
 
 iOS | Android
 ------- | ----
-<img title="iOS" src="https://i.imgur.com/whMT9CD.png" width="350"> | <img title="Android" src="https://i.imgur.com/LnzejpT.png" width="350">
+<img title="iOS" src="https://i.imgur.com/whMT9CD.png" width="350"> | <img title="Android" src="https://i.imgur.com/ltkmP1k.png" width="350">
 
 ## Table of contents
 - [Install](#install)
