@@ -102,7 +102,7 @@ RNGooglePlacePicker.show((response) => {
   if (response.didCancel) {
     console.log('User cancelled GooglePlacePicker');
   }
-  else if (response.erroxr) {
+  else if (response.error) {
     console.log('GooglePlacePicker Error: ', response.error);
   }
   else {
