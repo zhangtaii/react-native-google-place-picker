@@ -1,0 +1,43 @@
+
+{
+  "name": "react-native-google-place-picker",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
+  "version": "1.0.0",
+  "description": "React Native Wrapper of Google Place Picker for iOS + Android.",
+  "nativePackage": true,
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/q6112345/react-native-google-place-picker.git"
+  },
+  "keywords": [
+    "react-native",
+    "ios",
+    "android",
+    "input",
+    "map",
+    "location",
+    "google",
+    "maps",
+    "places",
+    "place",
+    "picker"
+  ],
+  "author": "q6112345",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/q6112345/react-native-google-place-picker/issues"
+  },
+  "homepage": "https://github.com/q6112345/react-native-google-place-picker#readme",
+  "rnpm": {
+    "commands": {
+      "prelink": "node_modules/react-native-google-place-picker/bin/prepare.sh",
+      "postlink": "node_modules/react-native-google-place-picker/bin/cocoapods.sh"
+    }
+  }
+}
