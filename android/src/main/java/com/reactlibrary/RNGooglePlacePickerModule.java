@@ -50,7 +50,6 @@ public class RNGooglePlacePickerModule extends ReactContextBaseJavaModule implem
             callback.invoke(response);
             return;
         }
-
         try {
             PlacePicker.IntentBuilder intentBuilder = new PlacePicker.IntentBuilder();
             Intent intent = intentBuilder.build(currentActivity);
@@ -72,8 +71,8 @@ public class RNGooglePlacePickerModule extends ReactContextBaseJavaModule implem
         }
     }
 
-    @Override
-    public void onActivityResult(final int requestCode, final int resultCode, final Intent data) {
+    // removed @Override temporarily just to get it working on different versions of RN
+    public void onActivityResult(final Activity activity, final int requestCode, final int resultCode, final Intent data) {
         if (mCallback == null || requestCode != REQUEST_PLACE_PICKER) {
             return;
         }
@@ -82,9 +81,13 @@ public class RNGooglePlacePickerModule extends ReactContextBaseJavaModule implem
             final Place place = PlacePicker.getPlace(data, reactContext);
             final CharSequence address = place.getAddress();
             final LatLng coordinate = place.getLatLng();
+			final CharSequence name = place.getName();
+			final CharSequence id = place.getId();
             response.putString("address", address.toString());
             response.putDouble("latitude", coordinate.latitude);
             response.putDouble("longitude", coordinate.longitude);
+			response.putString("name", name.toString());
+			response.putString("google_id", id.toString());
             mCallback.invoke(response);
         } else {
             response.putBoolean("didCancel", true);
@@ -92,5 +95,19 @@ public class RNGooglePlacePickerModule extends ReactContextBaseJavaModule implem
             return;
         }
     }
+
+    // removed @Override temporarily just to get it working on different versions of RN
+    // Ignored, required to implement ActivityEventListener for RN < 0.33
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+      this.onActivityResult(null, requestCode, resultCode, data);
+    }
+
+    /**
+   * Called when a new intent is passed to the activity
+   */
+   @Override
+   public void onNewIntent(Intent intent){
+     // ToDo
+   }
 
 }
