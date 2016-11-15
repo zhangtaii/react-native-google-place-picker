@@ -81,9 +81,13 @@ public class RNGooglePlacePickerModule extends ReactContextBaseJavaModule implem
             final Place place = PlacePicker.getPlace(data, reactContext);
             final CharSequence address = place.getAddress();
             final LatLng coordinate = place.getLatLng();
+			final CharSequence name = place.getName();
+			final CharSequence id = place.getId();
             response.putString("address", address.toString());
             response.putDouble("latitude", coordinate.latitude);
             response.putDouble("longitude", coordinate.longitude);
+			response.putString("name", name.toString());
+			response.putString("google_id", id.toString());
             mCallback.invoke(response);
         } else {
             response.putBoolean("didCancel", true);
