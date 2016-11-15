@@ -26,6 +26,16 @@ RCT_EXPORT_METHOD(show:
             } else {
                 [response setObject:[NSNull null] forKey:@"address"];
             }
+			if (place.name) {
+				[response setObject:place.name forKey:@"name"];
+			} else {
+				[response setObject:[NSNull null] forKey:@"name"];
+			}
+			if (place.placeID) {
+				[response setObject:place.placeID forKey:@"google_id"];
+			} else {
+				[response setObject:[NSNull null] forKey:@"google_id"];
+			}
             [response setObject:@(place.coordinate.latitude) forKey:@"latitude"];
             [response setObject:@(place.coordinate.longitude) forKey:@"longitude"];
             callback(@[response]);
