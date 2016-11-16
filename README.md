@@ -1,5 +1,5 @@
 
-# react-native-google-place-picker
+# react-native-google-place-picker [![npm version](https://badge.fury.io/js/react-native-google-place-picker.svg)](https://badge.fury.io/js/react-native-google-place-picker)
 
 React Native Wrapper of Google Place Picker for iOS + Android.
 
@@ -122,6 +122,8 @@ key | type | Description
 didCancel | boolean | Informs you if the user cancelled the process
 error | string | Contains an error message, if there is one
 address | string/null | The formated address of selected location, null if not available
+name | string | The name of this Place
+google_id | string | The unique id of this Place
 latitude | number | The latitude value of selected location
 longitude | number | The longitude value of selected location
 
