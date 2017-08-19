@@ -118,7 +118,7 @@ RNGooglePlacePicker.show((response) => {
 ### The Response Object
 
 key | type | Description
------- | ---- | ------- | ----------------------
+--- | --- | ---
 didCancel | boolean | Informs you if the user cancelled the process
 error | string | Contains an error message, if there is one
 address | string/null | The formated address of selected location, null if not available
