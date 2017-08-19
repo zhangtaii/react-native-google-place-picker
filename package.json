@@ -3,7 +3,7 @@
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "React Native Wrapper of Google Place Picker for iOS + Android.",
   "nativePackage": true,
   "main": "index.js",
