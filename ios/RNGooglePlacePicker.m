@@ -14,8 +14,7 @@ RCT_EXPORT_MODULE()
     return dispatch_get_main_queue();
 }
 
-RCT_EXPORT_METHOD(show:
-(RCTResponseSenderBlock) callback) {
+RCT_EXPORT_METHOD(show: (RCTResponseSenderBlock) callback) {
     GMSPlacePickerConfig *config = [[GMSPlacePickerConfig alloc] initWithViewport:nil];
     _placePicker = [[GMSPlacePicker alloc] initWithConfig:config];
     [_placePicker pickPlaceWithCallback:^(GMSPlace *place, NSError *error) {
