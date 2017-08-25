@@ -1,10 +1,8 @@
-
 package com.reactlibrary;
 
 import android.app.Activity;
 import android.widget.Toast;
 import android.content.Intent;
-
 
 import com.facebook.react.bridge.ActivityEventListener;
 import com.facebook.react.bridge.Arguments;
@@ -14,7 +12,6 @@ import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
 import com.facebook.react.bridge.WritableMap;
 
-
 import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
 import com.google.android.gms.common.GooglePlayServicesRepairableException;
 import com.google.android.gms.common.GooglePlayServicesUtil;
@@ -22,14 +19,11 @@ import com.google.android.gms.location.places.Place;
 import com.google.android.gms.location.places.ui.PlacePicker;
 import com.google.android.gms.maps.model.LatLng;
 
-
 public class RNGooglePlacePickerModule extends ReactContextBaseJavaModule implements ActivityEventListener {
-
     private final ReactApplicationContext reactContext;
     private Callback mCallback;
     WritableMap response;
     private static final int REQUEST_PLACE_PICKER = 1;
-
 
     public RNGooglePlacePickerModule(ReactApplicationContext reactContext) {
         super(reactContext);
@@ -59,26 +53,41 @@ public class RNGooglePlacePickerModule extends ReactContextBaseJavaModule implem
             response = Arguments.createMap();
             response.putString("error", "GooglePlayServicesRepairableException");
             callback.invoke(response);
-            GooglePlayServicesUtil
-                    .getErrorDialog(e.getConnectionStatusCode(), currentActivity, 0);
+            GooglePlayServicesUtil.getErrorDialog(
+                e.getConnectionStatusCode(),
+                currentActivity,
+                0
+            );
         } catch (GooglePlayServicesNotAvailableException e) {
             response = Arguments.createMap();
             response.putString("error", "Google Play Services is not available.");
             callback.invoke(response);
-            Toast.makeText(currentActivity, "Google Play Services is not available.",
-                    Toast.LENGTH_LONG)
-                    .show();
+            Toast.makeText(
+                currentActivity,
+                "Google Play Services is not available.",
+                Toast.LENGTH_LONG
+            ).show();
         }
     }
 
     // removed @Override temporarily just to get it working on different versions of RN
-    public void onActivityResult(final Activity activity, final int requestCode, final int resultCode, final Intent data) {
+    public void onActivityResult(
+        final Activity activity,
+        final int requestCode,
+        final int resultCode,
+        final Intent data
+    ) {
         if (mCallback == null || requestCode != REQUEST_PLACE_PICKER) {
             return;
         }
+        
         response = Arguments.createMap();
+        
         if (resultCode == 2) {
-            response.putString("error", "Google Maps not setup correctly. Did you forget the API key, or enabling the Places API for Android?");
+            response.putString(
+                "error",
+                "Google Maps not setup correctly. Did you forget the API key, or enabling the Places API for Android?"
+            );
             mCallback.invoke(response);
         } else if (resultCode == Activity.RESULT_OK) {
             final Place place = PlacePicker.getPlace(data, reactContext);
@@ -102,15 +111,14 @@ public class RNGooglePlacePickerModule extends ReactContextBaseJavaModule implem
     // removed @Override temporarily just to get it working on different versions of RN
     // Ignored, required to implement ActivityEventListener for RN < 0.33
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-      this.onActivityResult(null, requestCode, resultCode, data);
+        this.onActivityResult(null, requestCode, resultCode, data);
     }
 
     /**
-   * Called when a new intent is passed to the activity
-   */
-   @Override
-   public void onNewIntent(Intent intent){
-     // ToDo
-   }
-
+     * Called when a new intent is passed to the activity
+     */
+    @Override
+    public void onNewIntent(Intent intent){
+        // ToDo
+    }
 }
