@@ -17,7 +17,7 @@ public class RNGooglePlacePickerPackage implements ReactPackage {
         return Arrays.<NativeModule>asList(new RNGooglePlacePickerModule(reactContext));
     }
 
-    @Override
+    //@Override
     public List<Class<? extends JavaScriptModule>> createJSModules() {
         return Collections.emptyList();
     }
