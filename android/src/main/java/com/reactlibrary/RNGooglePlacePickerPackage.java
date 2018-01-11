@@ -14,7 +14,9 @@ import com.facebook.react.bridge.JavaScriptModule;
 public class RNGooglePlacePickerPackage implements ReactPackage {
     @Override
     public List<NativeModule> createNativeModules(ReactApplicationContext reactContext) {
-        return Arrays.<NativeModule>asList(new RNGooglePlacePickerModule(reactContext));
+        return Arrays.<NativeModule>asList(
+            new RNGooglePlacePickerModule(reactContext)
+        );
     }
 
     //@Override
