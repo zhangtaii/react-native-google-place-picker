@@ -50,9 +50,9 @@ Then you must install the native dependencies. You can use `rnpm` (now part of `
 
 #### Android
 
-1. Open up `android/app/src/main/java/[...]/MainActivity.java`
+1. Open up `android/app/src/main/java/[...]/MainApplication.java`
   - Add `import com.reactlibrary.RNGooglePlacePickerPackage;` to the imports at the top of the file
-  - Add `new RNGooglePlacePickerPackage()` to the list returned by the `getPackages()` method
+  - Add `new RNGooglePlacePickerPackage()` to the list returned by the `getPackages()` method, e.g: `packages.add(new RNGooglePlacePickerPackage());`
 2. Append the following lines to `android/settings.gradle`:
 
 ```groovy
