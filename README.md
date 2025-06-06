@@ -139,3 +139,5 @@ Thanks following repositories' inspiration/help:
 ### License
 
 Code in this git repo is licensed MIT.
+
+[![Powered by DartNode](https://dartnode.com/branding/DN-Open-Source-sm.png)](https://dartnode.com "Powered by DartNode - Free VPS for Open Source")
