@@ -77,20 +77,17 @@ public class RNGooglePlacePickerModule extends ReactContextBaseJavaModule implem
             return;
         }
         response = Arguments.createMap();
-        if (resultCode == 2) {
-            response.putString("error", "Google Maps not setup correctly. Did you forget the API key, or enabling the Places API for Android?");
-            mCallback.invoke(response);
-        } else if (resultCode == Activity.RESULT_OK) {
+        if (resultCode == Activity.RESULT_OK) {
             final Place place = PlacePicker.getPlace(data, reactContext);
             final CharSequence address = place.getAddress();
             final LatLng coordinate = place.getLatLng();
-            final CharSequence name = place.getName();
-            final CharSequence id = place.getId();
+			final CharSequence name = place.getName();
+			final CharSequence id = place.getId();
             response.putString("address", address.toString());
             response.putDouble("latitude", coordinate.latitude);
             response.putDouble("longitude", coordinate.longitude);
-            response.putString("name", name.toString());
-            response.putString("google_id", id.toString());
+			response.putString("name", name.toString());
+			response.putString("google_id", id.toString());
             mCallback.invoke(response);
         } else {
             response.putBoolean("didCancel", true);
